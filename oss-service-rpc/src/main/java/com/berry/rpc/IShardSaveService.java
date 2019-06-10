@@ -1,7 +1,5 @@
 package com.berry.rpc;
 
-import java.io.InputStream;
-
 /**
  * Title IShardSaveService
  * Description
@@ -14,7 +12,7 @@ import java.io.InputStream;
  */
 public interface IShardSaveService {
 
-    String writeShard(InputStream inputStream) ;
+    String writeShard(byte[] bytes) ;
 
-    InputStream readShard(String id) ;
+    byte[] readShard(String id) ;
 }

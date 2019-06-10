@@ -3,7 +3,10 @@ package com.berry.ossdataservice.service;
 import com.berry.rpc.IShardSaveService;
 import org.apache.dubbo.config.annotation.Service;
 
-import java.io.InputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Title ShardSaveServiceImpl
@@ -18,13 +21,24 @@ import java.io.InputStream;
 @Service
 public class ShardSaveServiceImpl implements IShardSaveService {
 
+    private Integer count = 0;
+
     @Override
-    public String writeShard(InputStream inputStream) {
-        return null;
+    public String writeShard(byte[] bytes) {
+        try {
+            System.out.println("wrote " + count);
+            OutputStream out = new FileOutputStream(new File("./", "test.png" + "." + count));
+            count++;
+            out.write(bytes);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "success";
     }
 
     @Override
-    public InputStream readShard(String id) {
+    public byte[] readShard(String id) {
         return null;
     }
 }

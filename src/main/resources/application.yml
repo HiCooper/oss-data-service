@@ -7,7 +7,7 @@ server:
 
 dubbo:
   scan:
-    base-packages: com.berry.provider.service
+    base-packages: com.berry.ossdataservice.service
   application:
     id: oss-data-service
     name: oss-data-service
@@ -18,9 +18,9 @@ dubbo:
     name: dubbo
     port: 3333
     status: server
-    host: 192.168.2.194
+    host: 192.168.2.207
   registry:
-    id: zk-registry
-    address: zookeeper://192.168.2.194:2181
+    id: oss-zk-registry
+    address: zookeeper://192.168.2.207:2181
   provider:
     status: memory
