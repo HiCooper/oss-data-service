@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: oss-data-service
+
+server:
+  port: 9090
+
+dubbo:
+  scan:
+    base-packages: com.berry.provider.service
+  application:
+    id: oss-data-service
+    name: oss-data-service
+    qos-enable: true
+    qos-port: 20181
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 3333
+    status: server
+    host: 192.168.2.194
+  registry:
+    id: zk-registry
+    address: zookeeper://192.168.2.194:2181
+  provider:
+    status: memory

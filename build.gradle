@@ -1,0 +1,44 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.berry'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":oss-service-rpc")
+
+    // https://mvnrepository.com/artifact/org.apache.dubbo/dubbo
+    compile group: 'org.apache.dubbo', name: 'dubbo', version: '2.7.1'
+
+    // https://mvnrepository.com/artifact/org.apache.curator/curator-recipes
+    compile group: 'org.apache.curator', name: 'curator-recipes', version: '4.0.0'
+
+    // https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper
+    compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.9', ext: 'pom'
+
+    // https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter
+    compile group: 'org.apache.dubbo', name: 'dubbo-spring-boot-starter', version: '2.7.1'
+    compile group: 'org.apache.dubbo', name: 'dubbo-spring-boot-actuator', version: '2.7.1'
+
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
