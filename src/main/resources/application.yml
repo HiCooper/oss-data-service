@@ -18,9 +18,9 @@ dubbo:
     name: dubbo
     port: 3333
     status: server
-    host: 192.168.2.207
+    host: 127.0.0.1
   registry:
-    id: oss-zk-registry
-    address: zookeeper://192.168.2.207:2181
+    id: oss-consul-registry
+    address: consul://127.0.0.1:8500
   provider:
     status: memory
