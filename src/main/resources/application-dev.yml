@@ -56,7 +56,8 @@ logging:
     org.springframework.web: ERROR
     com.berry.oss: DEBUG
 
-dataPath: ./
+global:
+  data-path: ./
 
 log:
   # 运行日志存储跟路径

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author xueancao
  */
 @Component
-@ConfigurationProperties
+@ConfigurationProperties(prefix = "global")
 @Data
 public class GlobalProperties {
 
