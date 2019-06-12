@@ -4,4 +4,3 @@ pluginManagement {
     }
 }
 rootProject.name = 'oss-data-service'
-include 'oss-service-rpc'

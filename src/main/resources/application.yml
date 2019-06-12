@@ -1,27 +1,27 @@
+server:
+  port: 9088
+
 spring:
   application:
-    name: oss-data-service
+    name: OSS_DATA_SERVICE
+  profiles:
+    active: dev
+  mvc:
+    favicon:
+      enabled: false
+  task:
+    execution:
+      thread-name-prefix: task-pool-
+      pool:
+        core-size: 4
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: scheduling-
+      pool:
+        size: 2
 
-server:
-  port: 9090
-
-dubbo:
-  scan:
-    base-packages: com.berry.ossdataservice.service
-  application:
-    id: oss-data-service
-    name: oss-data-service
-    qos-enable: true
-    qos-port: 20181
-  protocol:
-    id: dubbo
-    name: dubbo
-    port: 3333
-    status: server
-    host: 127.0.0.1
-    heartbeat: 10
-  registry:
-    id: oss-consul-registry
-    address: consul://127.0.0.1:8500
-  provider:
-    status: memory
+logging:
+  level:
+    ROOT: INFO
+    com.berry.oss: DEBUG
