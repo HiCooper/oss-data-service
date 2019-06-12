@@ -1,6 +1,8 @@
 package com.berry.ossdataservice.service.impl;
 
+import com.berry.ossdataservice.config.GlobalProperties;
 import com.berry.ossdataservice.service.IShardSaveService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -21,10 +23,13 @@ import java.io.IOException;
 @Service
 public class ShardSaveServiceImpl implements IShardSaveService {
 
+    @Autowired
+    private GlobalProperties globalProperties;
+
     @Override
     public String writeShard(String username, String bucketName, String fileName, String shardIndex, byte[] data) throws IOException {
         String userBucketPath = username + "/" + bucketName;
-        File file = new File("./", userBucketPath);
+        File file = new File(globalProperties.getDataPath(), userBucketPath);
         if (!file.exists()) {
             file.mkdirs();
         }

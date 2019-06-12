@@ -16,5 +16,5 @@ import org.springframework.stereotype.Component;
 @Data
 public class GlobalProperties {
 
-    private final String dataPath = "./";
+    private  String dataPath = "./";
 }
