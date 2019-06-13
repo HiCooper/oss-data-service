@@ -1,5 +1,7 @@
 package com.berry.ossdataservice.service.impl;
 
+import com.berry.ossdataservice.api.WriteShardResponse;
+import com.berry.ossdataservice.common.util.NetworkUtils;
 import com.berry.ossdataservice.config.GlobalProperties;
 import com.berry.ossdataservice.service.IShardSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,7 @@ public class ShardSaveServiceImpl implements IShardSaveService {
     private GlobalProperties globalProperties;
 
     @Override
-    public String writeShard(String username, String bucketName, String fileName, String shardIndex, byte[] data) throws IOException {
+    public WriteShardResponse writeShard(String username, String bucketName, String fileName, Integer shardIndex, byte[] data) throws IOException {
         String userBucketPath = username + "/" + bucketName;
         File file = new File(globalProperties.getDataPath(), userBucketPath);
         if (!file.exists()) {
@@ -37,19 +39,24 @@ public class ShardSaveServiceImpl implements IShardSaveService {
         FileOutputStream outputStream = new FileOutputStream(filePath);
         outputStream.write(data);
         outputStream.close();
-        return filePath;
+        WriteShardResponse response = new WriteShardResponse()
+                .setIp(NetworkUtils.getIpAddress())
+                .setPath(filePath);
+        return response;
     }
 
     @Override
     public byte[] readShard(String path) throws IOException {
         File file = new File(path);
         if (file.exists() && file.isFile()) {
-            FileInputStream inputStream = new FileInputStream(file);
-            byte[] result = new byte[inputStream.available()];
-            int read = inputStream.read(result);
-            if (read != inputStream.available()) {
+            FileInputStream in = new FileInputStream(file);
+            int size = in.available();
+            byte[] result = new byte[size];
+            int read = in.read(result);
+            if (read != size) {
                 throw new RuntimeException("数据不完整");
             }
+            in.close();
             return result;
         }
         return null;
