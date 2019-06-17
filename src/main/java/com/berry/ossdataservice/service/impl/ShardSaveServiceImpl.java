@@ -39,10 +39,9 @@ public class ShardSaveServiceImpl implements IShardSaveService {
         FileOutputStream outputStream = new FileOutputStream(filePath);
         outputStream.write(data);
         outputStream.close();
-        WriteShardResponse response = new WriteShardResponse()
-                .setIp(NetworkUtils.getIpAddress())
+        return new WriteShardResponse()
+                .setIp(NetworkUtils.INTERNET_IP)
                 .setPath(filePath);
-        return response;
     }
 
     @Override
