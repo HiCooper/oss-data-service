@@ -1,7 +1,5 @@
 package com.berry.ossdataservice.service.impl;
 
-import com.berry.ossdataservice.api.WriteShardResponse;
-import com.berry.ossdataservice.common.util.NetworkUtils;
 import com.berry.ossdataservice.config.GlobalProperties;
 import com.berry.ossdataservice.service.IShardSaveService;
 import org.slf4j.Logger;
@@ -33,7 +31,7 @@ public class ShardSaveServiceImpl implements IShardSaveService {
     private GlobalProperties globalProperties;
 
     @Override
-    public WriteShardResponse writeShard(String username, String bucketName, String fileName, Integer shardIndex, byte[] data) throws IOException {
+    public String writeShard(String username, String bucketName, String fileName, Integer shardIndex, byte[] data) throws IOException {
         File file = new File(globalProperties.getDataPath(), bucketName);
         if (!file.exists()) {
             file.mkdirs();
@@ -42,9 +40,7 @@ public class ShardSaveServiceImpl implements IShardSaveService {
         FileOutputStream outputStream = new FileOutputStream(filePath);
         outputStream.write(data);
         outputStream.close();
-        return new WriteShardResponse()
-                .setIp(NetworkUtils.INTERNET_IP)
-                .setPath(filePath);
+        return filePath;
     }
 
     @Override
