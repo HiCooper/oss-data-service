@@ -34,8 +34,7 @@ public class ShardSaveServiceImpl implements IShardSaveService {
 
     @Override
     public WriteShardResponse writeShard(String username, String bucketName, String fileName, Integer shardIndex, byte[] data) throws IOException {
-        String userBucketPath = username + "/" + bucketName;
-        File file = new File(globalProperties.getDataPath(), userBucketPath);
+        File file = new File(globalProperties.getDataPath(), bucketName);
         if (!file.exists()) {
             file.mkdirs();
         }
