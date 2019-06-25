@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +37,13 @@ public class ShardSaveServiceImpl implements IShardSaveService {
         if (!file.exists()) {
             file.mkdirs();
         }
-        String filePath = file.getPath() + "/" + fileName + "." + shardIndex;
+        String filePath;
+        if (StringUtils.isEmpty(shardIndex)) {
+            // 单机模式下 没有 shardIndex 参数
+            filePath = file.getPath() + "/" + fileName;
+        } else {
+            filePath = file.getPath() + "/" + fileName + "." + shardIndex;
+        }
         FileOutputStream outputStream = new FileOutputStream(filePath);
         outputStream.write(data);
         outputStream.close();
