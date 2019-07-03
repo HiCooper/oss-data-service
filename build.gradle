@@ -32,9 +32,9 @@ dependencies {
     compile("ch.qos.logback:logback-access:1.1.3")
 
 
-    implementation 'org.springframework.cloud:spring-cloud-starter-consul-config'
-    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-consul-config'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
 
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
