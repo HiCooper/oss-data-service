@@ -12,7 +12,7 @@ import lombok.Data;
  */
 @Data
 public class WriteShardMo {
-    String username;
+    String filePath;
     String bucketName;
     String fileName;
     Integer shardIndex;

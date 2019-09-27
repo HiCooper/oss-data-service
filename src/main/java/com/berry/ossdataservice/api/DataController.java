@@ -23,7 +23,7 @@ public class DataController {
 
     @PostMapping("write")
     public String writeShard(@RequestBody WriteShardMo mo) throws IOException {
-        return this.shardSaveService.writeShard(mo.getUsername(), mo.getBucketName(), mo.getFileName(), mo.getShardIndex(), mo.getData());
+        return this.shardSaveService.writeShard(mo.getFilePath(), mo.getBucketName(), mo.getFileName(), mo.getShardIndex(), mo.getData());
     }
 
     @GetMapping("read")
