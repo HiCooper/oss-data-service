@@ -36,6 +36,9 @@ dependencies {
 //    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
 //    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
 
+// https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 

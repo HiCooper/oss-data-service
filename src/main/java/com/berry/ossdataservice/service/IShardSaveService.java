@@ -33,4 +33,12 @@ public interface IShardSaveService {
      * @throws IOException
      */
     byte[] readShard(String path) throws IOException;
+
+    /**
+     * 删除数据
+     *
+     * @param path 所在路径
+     * @throws IOException
+     */
+    void deleteObj(String path) throws IOException;
 }

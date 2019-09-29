@@ -1,7 +1,6 @@
 package com.berry.ossdataservice.api;
 
 import com.berry.ossdataservice.service.IShardSaveService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -18,8 +17,11 @@ import java.io.IOException;
 @RequestMapping("data")
 public class DataController {
 
-    @Autowired
-    private IShardSaveService shardSaveService;
+    private final IShardSaveService shardSaveService;
+
+    public DataController(IShardSaveService shardSaveService) {
+        this.shardSaveService = shardSaveService;
+    }
 
     @PostMapping("write")
     public String writeShard(@RequestBody WriteShardMo mo) throws IOException {
@@ -29,5 +31,10 @@ public class DataController {
     @GetMapping("read")
     public byte[] readShard(@RequestParam("path") String path) throws IOException {
         return this.shardSaveService.readShard(path);
+    }
+
+    @GetMapping("delete")
+    public void deleteObj(@RequestParam("path") String path) throws IOException {
+        this.shardSaveService.deleteObj(path);
     }
 }

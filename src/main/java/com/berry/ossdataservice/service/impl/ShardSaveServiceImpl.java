@@ -1,5 +1,6 @@
 package com.berry.ossdataservice.service.impl;
 
+import com.berry.ossdataservice.common.util.FileUtils;
 import com.berry.ossdataservice.config.GlobalProperties;
 import com.berry.ossdataservice.service.IShardSaveService;
 import org.slf4j.Logger;
@@ -15,9 +16,6 @@ import java.io.IOException;
 
 /**
  * Title ShardSaveServiceImpl
- * Description
- * Copyright (c) 2019
- * Company  上海思贤信息技术股份有限公司
  *
  * @author berry_cooper
  * @version 1.0
@@ -67,5 +65,33 @@ public class ShardSaveServiceImpl implements IShardSaveService {
         }
         logger.error("数据丢失：{}", path);
         return null;
+    }
+
+    @Override
+    public void deleteObj(String path) throws IOException {
+        String dataPath = globalProperties.getDataPath();
+        File file = new File(path);
+        if (file.exists() && file.isFile()) {
+            FileUtils.deleteQuietly(file);
+        }
+        String firstDirName = getFirstDirName(path, dataPath);
+        // 相对bucket的根目录
+        File rootDir = new File(firstDirName);
+        // 递归清理文件下的 空目录
+        FileUtils.recursiveRemoveEmptyDir(rootDir);
+    }
+
+    private static String getFirstDirName(String path, String basePath) {
+        String filePath = path.substring(path.indexOf(basePath) + basePath.length());
+        System.out.println(filePath);
+        String[] s = filePath.split("/");
+        String firstDirName = "";
+        if (s.length < 2) {
+            throw new RuntimeException("illegal file path");
+        }
+        if (s.length > 2) {
+            firstDirName = s[1];
+        }
+        return firstDirName;
     }
 }
