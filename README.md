@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/HiCooper/oss-data-service.svg?branch=master)](https://travis-ci.org/HiCooper/oss-data-service)
+
+
 # oss-data-service
 
 #### 介绍
