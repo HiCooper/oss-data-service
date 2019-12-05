@@ -3,25 +3,10 @@
 #### 介绍
 oss-data-service  对象存储 数据存储服务,多机模式下部署使用
 
-#### 软件架构
-软件架构说明
+## 相关模块
 
-
-#### 安装教程
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+| 项目 | 描述 |
+|------|------|
+| [oss-backend](https://github.com/HiCooper/oss-backend) | 后端工程，Java 实现|
+| [oss-front](https://github.com/HiCooper/oss-front) | 前端工程，React 实现|
+| [oss-java-sdk](https://github.com/HiCooper/oss-sdk-java) | JAVA SKD |
