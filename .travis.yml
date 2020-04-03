@@ -1,9 +1,6 @@
 os: linux
-
+dist: xenial
 language: java
-
-before_script:
-  - git update-index --chmod=+x gradlew
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -13,3 +10,4 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+  timeout: 1800
