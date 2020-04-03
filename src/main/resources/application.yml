@@ -24,4 +24,4 @@ spring:
 logging:
   level:
     ROOT: INFO
-    com.berry.oss: DEBUG
+    com.berry.ossdataservice: DEBUG

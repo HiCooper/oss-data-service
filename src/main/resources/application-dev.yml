@@ -21,19 +21,18 @@ server:
     worker-threads: 20
     max-http-post-size: 4048576
 
-#log
+# logback set path
 logging:
+  config: classpath:logback/logback.xml
   level:
-    ROOT: INFO
-    org.springframework.web: ERROR
-    com.berry.oss: DEBUG
+    root: INFO
+    com.berry.ossdataservice: DEBUG
+  path: ./log
+  file:
+    max-history: 90
 
 global:
-  data-path: ./
-
-log:
-  # 运行日志存储跟路径
-  path: ./logs
+  data-path: ./store
 
 
 
