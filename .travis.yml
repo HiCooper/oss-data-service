@@ -18,4 +18,5 @@ cache:
 
 
 script:
+  - chmod +x gradlew
   - echo "skipping tests"
