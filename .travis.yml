@@ -3,7 +3,7 @@ language: java
 dist: xenial
 
 jdk:
-  - openjdk8git ls-tree HEAD
+  - openjdk8
 
 before_script:
   - chmod +x gradlew
